@@ -36,7 +36,7 @@ class FlutterAesEcbPkcs5 {
   /// [txt] and [key] shoudn't be null.
   static Future<String?> encryptString(String txt, String key) async {
     try {
-      final String? result =
+      final String result =
           await _channel.invokeMethod('encrypt', {"input": txt, "key": key});
       return result;
     } on PlatformException catch (e) {
@@ -50,7 +50,7 @@ class FlutterAesEcbPkcs5 {
   /// [txt] and [key] shoudn't be null.
   static Future<String?> decryptString(String txt, String key) async {
     try {
-      final String? result =
+      final String result =
           await _channel.invokeMethod('decrypt', {"input": txt, "key": key});
       return result;
     } on PlatformException catch (e) {
