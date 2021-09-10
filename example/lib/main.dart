@@ -32,11 +32,11 @@ class _MyAppState extends State<MyApp> {
 
     print(key);
     //encrypt
-    var encryptText = await FlutterAesEcbPkcs5.encryptString(data, key!);
+    var encryptText = await FlutterAesEcbPkcs5.encryptString(data, key);
 
     print(encryptText);
     //decrypt
-    var decryptText = await FlutterAesEcbPkcs5.decryptString(encryptText!, key);
+    var decryptText = await FlutterAesEcbPkcs5.decryptString(encryptText, key);
 
     print(decryptText);
 
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         encryptText +
         "\n" +
         "decryptText :" +
-        decryptText! +
+        decryptText +
         "\n";
 
     print(pkcs5Progress);
