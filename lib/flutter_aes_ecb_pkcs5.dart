@@ -11,8 +11,8 @@ class FlutterAesEcbPkcs5 {
   ///
   /// * If it is a Android device, like 'Android 9.0'.
   /// * If it is a IOS device, like 'IOS 11.2'.
-  static Future<String?> get platformVersion async {
-    final String? version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String> get platformVersion async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
@@ -20,9 +20,9 @@ class FlutterAesEcbPkcs5 {
   ///
   /// If it is a 128-bit key, enter 128 and the returned key will be encoded by Hex.
   /// [value] and [key] shoudn't be null.
-  static Future<String?> generateDesKey(int length) async {
+  static Future<String> generateDesKey(int length) async {
     try {
-      final String? result =
+      final String result =
           await _channel.invokeMethod('generateDesKey', {"length": length});
       return result;
     } on PlatformException catch (e) {
@@ -34,7 +34,7 @@ class FlutterAesEcbPkcs5 {
   ///
   /// The result of the encryption will be encoded by HEX.
   /// [txt] and [key] shoudn't be null.
-  static Future<String?> encryptString(String txt, String key) async {
+  static Future<String> encryptString(String txt, String key) async {
     try {
       final String result =
           await _channel.invokeMethod('encrypt', {"input": txt, "key": key});
@@ -48,7 +48,7 @@ class FlutterAesEcbPkcs5 {
   ///
   /// The content [txt] that needs to be decrypted must be HEX encoded，key also.
   /// [txt] and [key] shoudn't be null.
-  static Future<String?> decryptString(String txt, String key) async {
+  static Future<String> decryptString(String txt, String key) async {
     try {
       final String result =
           await _channel.invokeMethod('decrypt', {"input": txt, "key": key});
